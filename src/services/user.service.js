@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = "https://shoppingnode-yasir.herokuapp.com";
+// const API_URL = "https://shoppingnode-yasir.herokuapp.com";
+const API_URL = "http://localhost:9000";
 const token = "";
 
 const login = (username, password) => {
@@ -64,7 +65,7 @@ const activateProfile = (id) => {
     })
 }
 
-const contactUs = (name, email, subject, message) => {
+const contactUs = (name, email, subject, message, token) => {
     return axios.post(API_URL + "/user/contact", {
         name, email, subject, message
     }, {

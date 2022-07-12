@@ -1,7 +1,8 @@
-import { useFormik } from "formik";
+import { useFormik, ErrorMessage } from "formik";
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import * as Yup from "yup";
+import UserService from "../services/user.service";
 
 function Contact() {
   const formik = useFormik({
@@ -14,19 +15,19 @@ function Contact() {
     validationSchema: Yup.object({
       name: Yup.string()
         .max(25, "Maximum 25 characters allowed")
-        .required("This field is required"),
+        .required("Enter name"),
       email: Yup.string()
-        .email("Invalid email address")
-        .required("This field is required"),
+        .email("Enter valid email address")
+        .required("Enter email address"),
       subject: Yup.string()
         .max(50, "Maximum 50 characters allowed")
-        .required("This field is required"),
+        .required("Enter address"),
       message: Yup.string()
         .max(1000, "Maximum 1000 characters allowed")
-        .required("This field is required"),
+        .required("Enter message"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      UserService.contactUs(values.name, values.email, values.subject, values.message, "123");
     },
   });
 
@@ -44,10 +45,13 @@ function Contact() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.name}
+              tabIndex="1"
             />
             {formik.touched.name && formik.errors.name ? (
-              <div>{formik.errors.name}</div>
+              <div className="error">{formik.errors.name}</div>
             ) : null}
+
+            <br />            
 
             <label htmlFor="subject">Subject</label>
             <input
@@ -58,9 +62,10 @@ function Contact() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.subject}
+              tabIndex="3"
             />
             {formik.touched.subject && formik.errors.subject ? (
-              <div>{formik.errors.subject}</div>
+              <div className="error">{formik.errors.subject}</div>
             ) : null}
           </Col>
 
@@ -74,10 +79,13 @@ function Contact() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
+              tabIndex="2"
             />
             {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
+              <div className="error">{formik.errors.email}</div>
             ) : null}
+
+            <br />            
 
             <label htmlFor="message">Message</label>
             <input
@@ -88,13 +96,17 @@ function Contact() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.message}
+              tabIndex="4"
             />
             {formik.touched.message && formik.errors.message ? (
-              <div>{formik.errors.message}</div>
+              <div className="error">{formik.errors.message}</div>
             ) : null}
           </Col>
+
           <div className="text-center">
-            <button type="submit" className="btn btn-primary">
+              <br />            
+
+            <button type="submit" className="btn btn-primary" tabIndex="5">
               Submit
             </button>
           </div>
