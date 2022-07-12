@@ -53,11 +53,11 @@ function Navigation() {
       <div className="header_bottom">
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
-            <a className="navbar-brand" href="index.html">
+            <Link className="navbar-brand" to={"/"}>
               <span>
                 Minics
               </span>
-            </a>
+            </Link>
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className=""> </span>
@@ -77,8 +77,8 @@ function Navigation() {
                 <li className={splitLocation[1] === "why" ? "nav-item active" : "nav-item"}>
                   <Link className="nav-link" to={'why'}>Why Us</Link>
                 </li>
-                <li className={splitLocation[1] === "testimonial" ? "nav-item active" : "nav-item"}>
-                  <Link className="nav-link" to={'/testimonial'}>Testimonial</Link>
+                <li className={splitLocation[1] === "contact" ? "nav-item active" : "nav-item"}>
+                  <Link className="nav-link" to={'/contact'}>Contact</Link>
                 </li>
               </ul>
             </div>

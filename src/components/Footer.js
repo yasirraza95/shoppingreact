@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
     return (
         <div>
-            <footer class="footer_section">
+            <footer className="footer_section">
                 <Container>
                 <p>
                     &copy; <span id="displayYear"></span> All Rights Reserved By

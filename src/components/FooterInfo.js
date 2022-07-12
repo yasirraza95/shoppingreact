@@ -4,32 +4,32 @@ import './FooterInfo.css';
 function FooterInfo() {
   return (
     <div>
-      <section class="info_section ">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="info_contact">
+      <section className="info_section ">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <div className="info_contact">
                 <h5>
-                  <a href="" class="navbar-brand">
+                  <a href="" className="navbar-brand">
                     <span>Minics</span>
                   </a>
                 </h5>
                 <p>
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <i className="fa fa-map-marker" aria-hidden="true"></i>
                   Address
                 </p>
                 <p>
-                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <i className="fa fa-phone" aria-hidden="true"></i>
                   +01 1234567890
                 </p>
                 <p>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <i className="fa fa-envelope" aria-hidden="true"></i>
                   demo@gmail.com
                 </p>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="info_info">
+            <div className="col-md-3">
+              <div className="info_info">
                 <h5>Information</h5>
                 <p>
                   Eligendi sunt, provident, debitis nemo, facilis cupiditate
@@ -38,8 +38,8 @@ function FooterInfo() {
                 </p>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="info_links">
+            <div className="col-md-3">
+              <div className="info_links">
                 <h5>Useful Link</h5>
                 <ul>
                   <li>
@@ -60,25 +60,25 @@ function FooterInfo() {
                 </ul>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="info_form ">
+            <div className="col-md-3">
+              <div className="info_form ">
                 <h5>Newsletter</h5>
                 <form action="">
                   <input type="email" placeholder="Enter your email" />
                   <button>Subscribe</button>
                 </form>
-                <div class="social_box">
+                <div className="social_box">
                   <a href="">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <i className="fa fa-facebook" aria-hidden="true"></i>
                   </a>
                   <a href="">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <i className="fa fa-twitter" aria-hidden="true"></i>
                   </a>
                   <a href="">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <i className="fa fa-instagram" aria-hidden="true"></i>
                   </a>
                   <a href="">
-                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                    <i className="fa fa-youtube" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>

@@ -57,7 +57,7 @@ function HomeView() {
                             : error ? (<MessageBox variant="danger">{ error }</MessageBox>)
                             : (
                                 data.map(product => (
-                                    <Product product = { product } />
+                                    <Product key = {product._id} result = { product } />
                                 ))
                             )
                         }

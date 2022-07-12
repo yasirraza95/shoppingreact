@@ -6,21 +6,21 @@ const addToCarHandler = () => {
 };
 
 function Product(props) {
-  const { product } = props;
+  const { result } = props;
   return (
-    <Col sm={6} lg={4} key = { product._id }>
+    <Col sm={6} lg={4}>
       <div className="box">
         <div className="img-box">
-          <img src = { product.image } alt="" />
+          <img src = { result.image } alt="" />
           <Button className="add_cart_btn" onClick={() => addToCarHandler()}>
             <span>Add To Cart</span>
           </Button>
         </div>
         <div className="detail-box">
-          <h5>{ product.name }</h5>
+          <h5>{ result.name }</h5>
           <div className="product_info">
             <h5>
-              <span>$</span> { product.price }
+              <span>$</span> { result.price }
             </h5>
             <div className="star_container">
               <i className="fa fa-star" aria-hidden="true"></i>

@@ -4,40 +4,40 @@ import './Why.css';
 
 function Why() {
   return (
-    <section class="why_us_section layout_padding">
+    <section className="why_us_section layout_padding">
       <Container>
-        <div class="heading_container heading_center">
+        <div className="heading_container heading_center">
           <h2>Why Choose Us</h2>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="box ">
-              <div class="img-box">
+        <div className="row">
+          <div className="col-md-4">
+            <div className="box ">
+              <div className="img-box">
                 <img src="images/w1.png" alt="" />
               </div>
-              <div class="detail-box">
+              <div className="detail-box">
                 <h5>Fast Delivery</h5>
                 <p>variations of passages of Lorem Ipsum available</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="box ">
-              <div class="img-box">
+          <div className="col-md-4">
+            <div className="box ">
+              <div className="img-box">
                 <img src="images/w2.png" alt="" />
               </div>
-              <div class="detail-box">
+              <div className="detail-box">
                 <h5>Free Shiping</h5>
                 <p>variations of passages of Lorem Ipsum available</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="box ">
-              <div class="img-box">
+          <div className="col-md-4">
+            <div className="box ">
+              <div className="img-box">
                 <img src="images/w3.png" alt="" />
               </div>
-              <div class="detail-box">
+              <div className="detail-box">
                 <h5>Best Quality</h5>
                 <p>variations of passages of Lorem Ipsum available</p>
               </div>
