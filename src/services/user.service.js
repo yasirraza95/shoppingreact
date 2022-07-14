@@ -7,11 +7,6 @@ const token = "";
 const login = (username, password) => {
     return axios.post(API_URL + "/user/login", {
         username, password
-    }).then((response) => {
-        console.log(response);
-        localStorage.setItem("user", JSON.stringify(response));
-    }).catch((error) => {
-        console.log(error);
     });
 };
 
@@ -65,13 +60,9 @@ const activateProfile = (id) => {
     })
 }
 
-const contactUs = (name, email, subject, message, token) => {
+const contactUs = (name, email, subject, message) => {
     return axios.post(API_URL + "/user/contact", {
         name, email, subject, message
-    }, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
     })
 }
 

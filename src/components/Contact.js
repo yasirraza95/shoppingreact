@@ -1,11 +1,13 @@
-import { useFormik, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import React from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import UserService from "../services/user.service";
+import { toast } from "react-toastify";
 
 function Contact() {
-  const formik = useFormik({
+
+    const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
@@ -26,8 +28,16 @@ function Contact() {
         .max(1000, "Maximum 1000 characters allowed")
         .required("Enter message"),
     }),
-    onSubmit: (values) => {
-      UserService.contactUs(values.name, values.email, values.subject, values.message, "123");
+    onSubmit: (values, actions) => {
+        const id = toast.loading("Please wait, while your message is being sent");
+        UserService.contactUs(values.name, values.email, values.subject, values.message)
+        .then(response => {
+            toast.update(id, {render: response.data.message, type: "success", isLoading: false, autoClose: 2000});
+            actions.resetForm();
+        }).catch(err => {
+            toast.update(id, {render: err, type: "error", isLoading: false, autoClose: 2000 });
+        });
+
     },
   });
 
@@ -51,7 +61,7 @@ function Contact() {
               <div className="error">{formik.errors.name}</div>
             ) : null}
 
-            <br />            
+            <br />
 
             <label htmlFor="subject">Subject</label>
             <input
@@ -85,7 +95,7 @@ function Contact() {
               <div className="error">{formik.errors.email}</div>
             ) : null}
 
-            <br />            
+            <br />
 
             <label htmlFor="message">Message</label>
             <input
@@ -104,12 +114,13 @@ function Contact() {
           </Col>
 
           <div className="text-center">
-              <br />            
+            <br />
 
             <button type="submit" className="btn btn-primary" tabIndex="5">
               Submit
             </button>
           </div>
+
         </Row>
       </Container>
     </form>
