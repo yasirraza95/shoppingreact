@@ -24,7 +24,7 @@ const showProfile = (id) => {
     })
 }
 
-const updateProfile = (id, name, phone) => {
+const updateProfile = (id, name, phone, token) => {
     return axios.put(API_URL + "/user/profile/" + id, {
         name, phone
     }, {
@@ -34,7 +34,7 @@ const updateProfile = (id, name, phone) => {
     })
 }
 
-const forgotPassword = (email) => {
+const forgotPassword = (email, token) => {
     return axios.post(API_URL + "/user/forgot", {
         email
     }, {

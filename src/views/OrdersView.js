@@ -1,18 +1,18 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Signup from "../components/Signup";
+import Orders from "../components/Orders";
 
-function SignupView() {
+function OrdersView() {
   return (
     <section className="product_section layout_padding">
       <Container>
         <div className="heading_container heading_center">
-          <h2>Signup</h2>
+          <h2>Orders</h2>
         </div>
-        <Signup />
+        <Orders />
       </Container>
     </section>
   );
 }
 
-export default SignupView;
+export default OrdersView;

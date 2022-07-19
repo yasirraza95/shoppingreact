@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
 import React, { useContext, useEffect } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import UserService from "../services/user.service";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router";
-import UserContext from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -49,13 +50,14 @@ function Login() {
             pauseOnHover: false,
             closeOnClick: true,
           });
-          ctxDispatch({ type: "USER_LOGIN", payload: response.data });
-          localStorage.setItem("userInfo", JSON.stringify(response.data));
+          ctxDispatch({ type: "LOGIN", payload: response.data.data, token: response.data.token });
+          localStorage.setItem("userInfo", JSON.stringify(response.data.data));
+          localStorage.setItem("token", JSON.stringify(response.data.token));
           navigate(redirect || "/");
         })
         .catch((err) => {
           let result = "";
-          if (err.response.status == 401) {
+          if (err.response.status === 401) {
             result = "Username or password is invalid";
           } else {
             result = err.message;
@@ -120,6 +122,13 @@ function Login() {
             <button type="submit" className="btn btn-primary" tabIndex="3">
               Login
             </button>
+            
+            <br/><br/>
+            
+            <Link to={"/signup"}>New User? Create Account</Link>
+            <br/><br/>
+            
+            <Link to={"/forgot"}>Forgot Password? Click here</Link>
           </div>
         </Row>
       </Container>
