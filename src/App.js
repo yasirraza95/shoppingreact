@@ -18,6 +18,8 @@ import CartView from "./views/CartView";
 import WishlistView from "./views/WishlistView";
 import OrdersView from "./views/OrdersView";
 import OrdersDetailView from "./views/OrdersDetailView";
+import ShippingView from "./views/ShippingView";
+import ThankyouView from "./views/ThankyouView";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
       <ToastContainer position="bottom-center" limit={1} />
       <Navbar />
       <Routes>
+        <Route path="/thankyou" element={<ThankyouView />} />
+        <Route path="/shipping" element={<ShippingView />} />
         <Route path="/detail/:id" element={<OrdersDetailView />} />
         <Route path="/orders" element={<OrdersView />} />
         <Route path="/wishlist" element={<WishlistView />} />

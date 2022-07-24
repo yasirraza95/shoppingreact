@@ -51,7 +51,9 @@ function ProductView() {
           ) : error ? (
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
-            data.map((product) => <Product key = {product._id} result = { product } />)
+            data.map((product) => (
+              <Product key={product._id} result={product} />
+            ))
           )}
         </Row>
       </Container>

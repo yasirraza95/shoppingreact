@@ -1,24 +1,18 @@
 import { createContext, useReducer } from "react";
-
+import WishlistService from "../services/wishlist.service";
 export const UserContext = createContext();
+let userData = localStorage.getItem("userInfo");
+const userToken = localStorage.getItem("token");
 
 const initialState = {
-  userInfo: localStorage.getItem("userInfo")
-    ? JSON.parse(localStorage.getItem("userInfo"))
-    : null,
-  token: localStorage.getItem("token")
-    ? JSON.parse(localStorage.getItem("token"))
-    : null,
+  userInfo: userData ? JSON.parse(userData) : null,
+  token: userToken ? JSON.parse(userToken) : null,
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
   },
-  wishlist: {
-    wishlistItems: localStorage.getItem("wishlistItems")
-      ? JSON.parse(localStorage.getItem("wishlistItems"))
-      : [],
-  },
+  wishlistItems: 1,
 };
 
 function reducer(state, action) {
@@ -49,28 +43,29 @@ function reducer(state, action) {
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     case "CLEAR_CART":
+      localStorage.setItem("cartItems", []);
       return { ...state, cart: { ...state.cart, cartItems: [] } };
-    case "ADD_WISHLIST_ITEM":
-      const newWishItem = action.payload;
-      const existWishItem = state.wishlist.wishlistItems.find(
-        (item) => item._id === newWishItem._id
-      );
-      const wishlistItems = existWishItem
-        ? state.wishlist.wishlistItems.map((item) =>
-            item._id === existWishItem._id ? newWishItem : item
-          )
-        : [...state.wishlist.wishlistItems, newWishItem];
-      localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-      return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
-    case "REMOVE_WISHLIST_ITEM": {
-      const wishlistItems = state.wishlist.wishlistItems.filter(
-        (item) => item._id !== action.payload._id
-      );
-      localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-      return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
-    }
-    case "CLEAR_WISHLIST":
-      return { ...state, wishlist: { ...state.wishlist, wishlistItems: [] } };
+    // case "ADD_WISHLIST_ITEM":
+    //   const newWishItem = action.payload;
+    //   const existWishItem = state.wishlist.wishlistItems.find(
+    //     (item) => item._id === newWishItem._id
+    //   );
+    //   const wishlistItems = existWishItem
+    //     ? state.wishlist.wishlistItems.map((item) =>
+    //         item._id === existWishItem._id ? newWishItem : item
+    //       )
+    //     : [...state.wishlist.wishlistItems, newWishItem];
+    //   localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
+    // case "REMOVE_WISHLIST_ITEM": {
+    //   const wishlistItems = state.wishlist.wishlistItems.filter(
+    //     (item) => item._id !== action.payload._id
+    //   );
+    //   localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
+    // }
+    // case "CLEAR_WISHLIST":
+    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems: [] } };
     default:
       return state;
   }

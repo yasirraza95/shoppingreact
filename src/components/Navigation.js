@@ -7,7 +7,7 @@ import "./Navigation.css";
 
 function Navigation() {
   const { state, dispatch: ctxDispatch } = useContext(UserContext);
-  const { userInfo, cart } = state;
+  const { userInfo, cart, wishlistItems } = state;
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
@@ -54,7 +54,7 @@ function Navigation() {
                     <span>
                       Wishlist
                       <Badge pill bg="success">
-                        1
+                        {wishlistItems}
                       </Badge>
                     </span>
                   </Link>

@@ -1,14 +1,27 @@
-import React, { useContext } from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useContext, useEffect } from "react";
+import { Button, Container, Row } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "./Cart.css";
 import MessageBox from "./MessageBox";
 
 function Cart() {
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  const redirectUrl = new URLSearchParams(search).get("redirect");
+  const redirect = redirectUrl ? redirectUrl : "/";
+
   const { state, dispatch: ctxDispatch } = useContext(UserContext);
   const {
     cart: { cartItems },
+    userInfo,
   } = state;
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
 
   const updateCart = (product, quantity) => {
     ctxDispatch({
@@ -19,6 +32,10 @@ function Cart() {
 
   const removeProduct = (product) => {
     ctxDispatch({ type: "REMOVE_CART_ITEM", payload: product });
+  };
+
+  const shippingHandler = () => {
+    navigate("/shipping");
   };
 
   return (
@@ -41,7 +58,7 @@ function Cart() {
               </thead>
               <tbody>
                 {cartItems.map((product) => (
-                  <tr>
+                  <tr key={product._id}>
                     <td>
                       <img src={product.image} />
                     </td>
@@ -86,6 +103,13 @@ function Cart() {
               <b>
                 Total: {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
               </b>
+              <br />
+              <Button
+                className="add_cart_btn"
+                onClick={() => shippingHandler()}
+              >
+                <span>Place Order</span>
+              </Button>
             </div>
           </Row>
         </Container>
