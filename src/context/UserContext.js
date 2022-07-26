@@ -45,27 +45,6 @@ function reducer(state, action) {
     case "CLEAR_CART":
       localStorage.setItem("cartItems", []);
       return { ...state, cart: { ...state.cart, cartItems: [] } };
-    // case "ADD_WISHLIST_ITEM":
-    //   const newWishItem = action.payload;
-    //   const existWishItem = state.wishlist.wishlistItems.find(
-    //     (item) => item._id === newWishItem._id
-    //   );
-    //   const wishlistItems = existWishItem
-    //     ? state.wishlist.wishlistItems.map((item) =>
-    //         item._id === existWishItem._id ? newWishItem : item
-    //       )
-    //     : [...state.wishlist.wishlistItems, newWishItem];
-    //   localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
-    // case "REMOVE_WISHLIST_ITEM": {
-    //   const wishlistItems = state.wishlist.wishlistItems.filter(
-    //     (item) => item._id !== action.payload._id
-    //   );
-    //   localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems } };
-    // }
-    // case "CLEAR_WISHLIST":
-    //   return { ...state, wishlist: { ...state.wishlist, wishlistItems: [] } };
     default:
       return state;
   }

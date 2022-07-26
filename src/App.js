@@ -20,6 +20,7 @@ import OrdersView from "./views/OrdersView";
 import OrdersDetailView from "./views/OrdersDetailView";
 import ShippingView from "./views/ShippingView";
 import ThankyouView from "./views/ThankyouView";
+import AdminLoginView from "./views/AdminLoginView";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <ToastContainer position="bottom-center" limit={1} />
       <Navbar />
       <Routes>
+        <Route path="/admin" element={<AdminLoginView />} />
         <Route path="/thankyou" element={<ThankyouView />} />
         <Route path="/shipping" element={<ShippingView />} />
         <Route path="/detail/:id" element={<OrdersDetailView />} />
