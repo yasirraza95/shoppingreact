@@ -46,8 +46,8 @@ function App() {
         <Route path="/" element={<HomeView />} />
       </Routes>
       <div>
-        <FooterInfo />
-        <Footer />
+        {/* <FooterInfo /> */}
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "react-bootstrap";
-import './About.css';
+import "./About.css";
 
 function About() {
   return (
