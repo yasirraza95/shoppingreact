@@ -2,6 +2,8 @@ import { axios } from "axios";
 import React, { useEffect, useReducer } from "react";
 import { Container, Row } from "react-bootstrap";
 import About from "../components/About";
+import Footer from "../components/Footer";
+import FooterInfo from "../components/FooterInfo";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Product from "../components/Product";
@@ -66,6 +68,8 @@ function HomeView() {
       </section>
       <About />
       <Why />
+      <FooterInfo />
+      <Footer />
     </>
   );
 }
