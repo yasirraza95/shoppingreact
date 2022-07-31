@@ -6,6 +6,8 @@ import UserService from "../services/user.service";
 import { toast } from "react-toastify";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Footer from "../components/Footer";
+import FooterInfo from "../components/FooterInfo";
 
 function ContactView() {
   const formik = useFormik({
@@ -58,98 +60,106 @@ function ContactView() {
   });
 
   return (
-    <section className="product_section layout_padding">
-      <Container>
-        <div className="heading_container heading_center">
-          <h2>Contact Us</h2>
-        </div>
-        <form onSubmit={formik.handleSubmit}>
-          <Container>
-            <Row>
-              <Col md={6}>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  label="Name"
-                  className="form-control"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.name}
-                  tabIndex="1"
-                >
-                  {formik.touched.name && formik.errors.name ? (
-                    <div className="error">{formik.errors.name}</div>
-                  ) : null}
-                </Input>
+    <>
+      <section className="product_section layout_padding">
+        <Container>
+          <div className="heading_container heading_center">
+            <h2>Contact Us</h2>
+          </div>
+          <form onSubmit={formik.handleSubmit}>
+            <Container>
+              <Row>
+                <Col md={6}>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    label="Name"
+                    className="form-control"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                    tabIndex="1"
+                  >
+                    {formik.touched.name && formik.errors.name ? (
+                      <div className="error">{formik.errors.name}</div>
+                    ) : null}
+                  </Input>
 
-                <br />
+                  <br />
 
-                <Input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  label="Subject"
-                  className="form-control"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.subject}
-                  tabIndex="3"
-                >
-                  {formik.touched.subject && formik.errors.subject ? (
-                    <div className="error">{formik.errors.subject}</div>
-                  ) : null}
-                </Input>
-              </Col>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    label="Subject"
+                    className="form-control"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.subject}
+                    tabIndex="3"
+                  >
+                    {formik.touched.subject && formik.errors.subject ? (
+                      <div className="error">{formik.errors.subject}</div>
+                    ) : null}
+                  </Input>
+                </Col>
 
-              <Col md={6}>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  label="Email"
-                  className="form-control"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.email}
-                  tabIndex="2"
-                >
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="error">{formik.errors.email}</div>
-                  ) : null}
-                </Input>
+                <Col md={6}>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    label="Email"
+                    className="form-control"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    tabIndex="2"
+                  >
+                    {formik.touched.email && formik.errors.email ? (
+                      <div className="error">{formik.errors.email}</div>
+                    ) : null}
+                  </Input>
 
-                <br />
+                  <br />
 
-                <Input
-                  id="message"
-                  name="message"
-                  type="text"
-                  label="Message"
-                  className="form-control"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.message}
-                  tabIndex="4"
-                >
-                  {formik.touched.message && formik.errors.message ? (
-                    <div className="error">{formik.errors.message}</div>
-                  ) : null}
-                </Input>
-              </Col>
+                  <Input
+                    id="message"
+                    name="message"
+                    type="text"
+                    label="Message"
+                    className="form-control"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.message}
+                    tabIndex="4"
+                  >
+                    {formik.touched.message && formik.errors.message ? (
+                      <div className="error">{formik.errors.message}</div>
+                    ) : null}
+                  </Input>
+                </Col>
 
-              <div className="text-center">
-                <br />
+                <div className="text-center">
+                  <br />
 
-                <Button type="submit" className="btn btn-primary" tabIndex="5">
-                  Submit
-                </Button>
-              </div>
-            </Row>
-          </Container>
-        </form>
-      </Container>
-    </section>
+                  <Button
+                    type="submit"
+                    className="btn btn-primary"
+                    tabIndex="5"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </Row>
+            </Container>
+          </form>
+        </Container>
+      </section>
+      <FooterInfo />
+      <Footer />
+    </>
   );
 }
 

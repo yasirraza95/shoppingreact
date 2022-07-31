@@ -8,6 +8,8 @@ import { useLocation, useNavigate } from "react-router";
 import { UserContext } from "../context/UserContext";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Footer from "../components/Footer";
+import FooterInfo from "../components/FooterInfo";
 
 function ForgotView() {
   const navigate = useNavigate();
@@ -62,46 +64,54 @@ function ForgotView() {
     },
   });
   return (
-    <section className="product_section layout_padding">
-      <Container>
-        <div className="heading_container heading_center">
-          <h2>Forgot</h2>
-        </div>
-        <form onSubmit={formik.handleSubmit}>
-          <Container>
-            <Row>
-              <Col md={3}></Col>
-              <Col md={6}>
-                <Input
-                  id="email"
-                  name="email"
-                  type="text"
-                  label="Email"
-                  className="form-control"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.email}
-                  tabIndex="1"
-                >
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="error">{formik.errors.email}</div>
-                  ) : null}
-                </Input>
-              </Col>
-              <Col md={3}></Col>
+    <>
+      <section className="product_section layout_padding">
+        <Container>
+          <div className="heading_container heading_center">
+            <h2>Forgot</h2>
+          </div>
+          <form onSubmit={formik.handleSubmit}>
+            <Container>
+              <Row>
+                <Col md={3}></Col>
+                <Col md={6}>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="text"
+                    label="Email"
+                    className="form-control"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    tabIndex="1"
+                  >
+                    {formik.touched.email && formik.errors.email ? (
+                      <div className="error">{formik.errors.email}</div>
+                    ) : null}
+                  </Input>
+                </Col>
+                <Col md={3}></Col>
 
-              <div className="text-center">
-                <br />
+                <div className="text-center">
+                  <br />
 
-                <Button type="submit" className="btn btn-primary" tabIndex="2">
-                  Submit
-                </Button>
-              </div>
-            </Row>
-          </Container>
-        </form>
-      </Container>
-    </section>
+                  <Button
+                    type="submit"
+                    className="btn btn-primary"
+                    tabIndex="2"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </Row>
+            </Container>
+          </form>
+        </Container>
+      </section>
+      <FooterInfo />
+      <Footer />
+    </>
   );
 }
 

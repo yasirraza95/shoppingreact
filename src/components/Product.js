@@ -3,6 +3,7 @@ import { Button, Col } from "react-bootstrap";
 import { UserContext } from "../context/UserContext";
 import { toast } from "react-toastify";
 import WishlistService from "../services/wishlist.service";
+import "./Product.css";
 
 function Product(props) {
   const { result } = props;

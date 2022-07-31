@@ -13,6 +13,7 @@ function Input(props) {
         onBlur={props.onBlur}
         value={props.value}
         tabIndex={props.tabIndex}
+        disabled={props.disabled}
       />
       {props.children}
     </>

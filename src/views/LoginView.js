@@ -57,8 +57,11 @@ function LoginView() {
             payload: response.data.data,
             token: response.data.token,
           });
-          localStorage.setItem("userInfo", JSON.stringify(response.data.data));
-          localStorage.setItem("token", JSON.stringify(response.data.token));
+          ctxDispatch({
+            type: "THANKYOU",
+            payload: []
+          });
+          
           navigate(redirect || "/");
         })
         .catch((err) => {

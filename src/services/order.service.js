@@ -19,6 +19,14 @@ const viewUserOrders = (id, token) => {
     })
 }
 
+const viewOrderDetail = (id, token) => {
+    return axios.get(API_URL + "/order/detail/" + id, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
+
 const placeOrder = (user_id, address, email, phone, price, orderDtl, token) => {
     return axios.post(API_URL + "/order/add", {
         user_id, address, email, phone, price, order_detail: orderDtl
@@ -39,7 +47,7 @@ const deleteOrderById = (id, token) => {
 
 
 const OrderService = {
-    viewAllOrders, viewUserOrders, placeOrder, deleteOrderById
+    viewAllOrders, viewUserOrders, viewOrderDetail, placeOrder, deleteOrderById
 }
 
 export default OrderService;

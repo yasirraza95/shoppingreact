@@ -2,10 +2,12 @@ import { createContext, useReducer } from "react";
 import WishlistService from "../services/wishlist.service";
 export const UserContext = createContext();
 let userData = localStorage.getItem("userInfo");
+let userThank = localStorage.getItem("thankyou");
 const userToken = localStorage.getItem("token");
 
 const initialState = {
   userInfo: userData ? JSON.parse(userData) : null,
+  thankyou: userThank ? JSON.parse(userThank) : null,
   token: userToken ? JSON.parse(userToken) : null,
   cart: {
     cartItems: localStorage.getItem("cartItems")
@@ -18,6 +20,8 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "LOGIN":
+      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+      localStorage.setItem("token", JSON.stringify(action.token));
       return { ...state, userInfo: action.payload, token: action.token };
     case "UPDATE_PROFILE":
       return { ...state, userInfo: action.payload };
@@ -45,6 +49,9 @@ function reducer(state, action) {
     case "CLEAR_CART":
       localStorage.setItem("cartItems", []);
       return { ...state, cart: { ...state.cart, cartItems: [] } };
+    case "THANKYOU":
+      localStorage.setItem("thankyou", JSON.stringify(action.payload));
+      return { ...state, thankyou: action.payload };
     default:
       return state;
   }

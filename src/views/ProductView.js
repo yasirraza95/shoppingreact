@@ -4,6 +4,8 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Product from "../components/Product";
 import ProductService from "../services/product.service";
+import Footer from "../components/Footer";
+import FooterInfo from "../components/FooterInfo";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,24 +42,28 @@ function ProductView() {
   }, []);
 
   return (
-    <section className="product_section layout_padding">
-      <Container>
-        <div className="heading_container heading_center">
-          <h2>Our Products</h2>
-        </div>
-        <Row>
-          {loading ? (
-            <LoadingBox />
-          ) : error ? (
-            <MessageBox variant="danger">{error}</MessageBox>
-          ) : (
-            data.map((product) => (
-              <Product key={product._id} result={product} />
-            ))
-          )}
-        </Row>
-      </Container>
-    </section>
+    <>
+      <section className="product_section layout_padding">
+        <Container>
+          <div className="heading_container heading_center">
+            <h2>Our Products</h2>
+          </div>
+          <Row>
+            {loading ? (
+              <LoadingBox />
+            ) : error ? (
+              <MessageBox variant="danger">{error}</MessageBox>
+            ) : (
+              data.map((product) => (
+                <Product key={product._id} result={product} />
+              ))
+            )}
+          </Row>
+        </Container>
+      </section>
+      <FooterInfo />
+      <Footer />
+    </>
   );
 }
 

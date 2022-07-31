@@ -1,3 +1,23 @@
+.hero_area {
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.sub_page .hero_area {
+  min-height: auto;
+}
+
+.sub_page .about_section {
+  background-color: #313958;
+}
+
 .header_section {
   background-color: #3a4468;
 }
@@ -100,6 +120,19 @@
   color: #f3c93e;
 }
 
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+  color: #000000;
+  font-weight: bold;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.navbar-brand span {
+  color: #ffffff;
+}
+
 .custom_nav-container {
   padding: 0;
 }
@@ -178,4 +211,16 @@
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+}
+
+button {
+  margin: 15px;
 }
