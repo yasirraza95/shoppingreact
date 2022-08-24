@@ -10,6 +10,7 @@ import Input from "../components/Input";
 import Image from "../components/Image";
 import Footer from "../components/Footer";
 import FooterInfo from "../components/FooterInfo";
+import axios from "axios";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -44,20 +45,6 @@ function WishlistView() {
     }
   }, [navigate, redirect, userInfo]);
 
-  const fetchData = async () => {
-    dispatch({ type: "FETCH_REQUEST" });
-    try {
-      const result = await WishlistService.viewUserWishlist(
-        userInfo.userId,
-        token
-      );
-      console.log(result.data.data.wishlist.length);
-      dispatch({ type: "FETCH_SUCCESS", payload: result.data.data.wishlist });
-    } catch (err) {
-      dispatch({ type: "FETCH_FAIL", payload: err.message });
-    }
-  };
-
   const addToCart = (product) => {};
 
   const deleteWishlist = (id) => {
@@ -71,8 +58,21 @@ function WishlistView() {
   };
 
   useEffect(() => {
+    async function fetchData() {
+      dispatch({ type: "FETCH_REQUEST" });
+      try {
+        const result = await WishlistService.viewUserWishlist(
+          userInfo.userId,
+          token
+        );
+        console.log(result.data.data.wishlist.length);
+        dispatch({ type: "FETCH_SUCCESS", payload: result.data.data.wishlist });
+      } catch (err) {
+        dispatch({ type: "FETCH_FAIL", payload: err.message });
+      }
+    };
     fetchData();
-  }, []);
+  }, [token, userInfo.userId]);
 
   return (
     <>

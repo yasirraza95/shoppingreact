@@ -1,14 +1,16 @@
 import axios from "axios";
-
+import api from "../interceptors/api";
 // const API_URL = "https://shoppingnode-yasir.herokuapp.com";
 const API_URL = "http://localhost:9000";
 
-const viewUserWishlist = (id, token) => {
-  return axios.get(API_URL + "/wishlist/get/" + id, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+const viewUserWishlist = async(id, token) => {
+  // return await axios.get(API_URL + "/wishlist/get/" + id, {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // });
+
+  return api.get("/wishlist/get/" + id);
 };
 
 const checkExistence = (user_id, prod_id, token) => {

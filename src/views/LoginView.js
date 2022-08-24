@@ -56,6 +56,7 @@ function LoginView() {
             type: "LOGIN",
             payload: response.data.data,
             token: response.data.token,
+            refreshToken: response.data.refreshToken,
           });
           ctxDispatch({
             type: "THANKYOU",
@@ -100,6 +101,7 @@ function LoginView() {
                   id="username"
                   name="username"
                   type="text"
+                  label="Username"
                   className="form-control"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -116,6 +118,7 @@ function LoginView() {
                   id="password"
                   name="password"
                   type="password"
+                  label="Password"
                   className="form-control"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}

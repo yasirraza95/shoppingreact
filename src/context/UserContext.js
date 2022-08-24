@@ -1,14 +1,15 @@
 import { createContext, useReducer } from "react";
-import WishlistService from "../services/wishlist.service";
 export const UserContext = createContext();
 let userData = localStorage.getItem("userInfo");
 let userThank = localStorage.getItem("thankyou");
 const userToken = localStorage.getItem("token");
+const refreshToken = localStorage.getItem("refreshtoken");
 
 const initialState = {
   userInfo: userData ? JSON.parse(userData) : null,
   thankyou: userThank ? JSON.parse(userThank) : null,
   token: userToken ? JSON.parse(userToken) : null,
+  token: refreshToken ? JSON.parse(refreshToken) : null,
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
@@ -22,7 +23,19 @@ function reducer(state, action) {
     case "LOGIN":
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
       localStorage.setItem("token", JSON.stringify(action.token));
-      return { ...state, userInfo: action.payload, token: action.token };
+      localStorage.setItem("refreshToken", JSON.stringify(action.refreshToken));
+      return {
+        ...state,
+        userInfo: action.payload,
+        token: action.token,
+        refreshToken: action.refreshToken,
+      };
+    case "UPDATE_TOKEN":
+      localStorage.setItem("token", JSON.stringify(action.token));
+      return {
+        ...state,
+        token: action.token
+      };
     case "UPDATE_PROFILE":
       return { ...state, userInfo: action.payload };
     case "LOGOUT":
